@@ -1,6 +1,12 @@
-#ifndef PI_MACRO_H
-#define PI_MACRO_H
+#include <stdio.h>
 
-#define PI 3.14159265359
-
-#endif /* PI_MACRO_H */
+/**
+ * main - a program that prints the name of the file it was compiled from
+ *
+ * Return: Always 0 (Success)
+ */
+int main(void)
+{
+	printf("%s\n", __FILE__);
+	return (0);
+}
