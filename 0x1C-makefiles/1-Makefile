@@ -1,5 +1,21 @@
-#Function to automatically compile all C files
+# Makefile for building the 'school' executable
+
+# Variables
 CC = gcc
 SRC = main.c school.c
-all:
+
+# Rule: all
+all: school
+
+# Rule to build the executable 'school'
+school: $(SRC)
 	$(CC) $(SRC) -o school
+
+# Clean rule to remove the executable
+clean:
+	rm -f school
+
+# Touch one of the source files to force a rebuild
+force-rebuild:
+	touch main.c
+	make

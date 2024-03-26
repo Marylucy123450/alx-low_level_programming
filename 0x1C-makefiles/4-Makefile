@@ -1,20 +1,34 @@
-#Compiles code from the files source code(machine object)
+# Makefile for building the 'school' executable
+
+# Variables
 CC = gcc
 SRC = main.c school.c
 OBJ = $(SRC:.c=.o)
 NAME = school
 RM = rm -f
-CFLAGS = -Wall -Wextra -Werror -pedantic
+CFLAGS = -Wall -Werror -Wextra -pedantic
 
-all:	$(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+# Rule: all
+all: $(NAME)
 
+# Rule to build the executable 'school'
+$(NAME): $(OBJ)
+	$(CC) $(OBJ) -o $(NAME)
+
+# Rule to build .o files from corresponding .c files
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Rule: clean
 clean:
 	$(RM) *~ $(NAME)
 
+# Rule: oclean
 oclean:
 	$(RM) $(OBJ)
 
+# Rule: fclean
 fclean: clean oclean
 
-re:	oclean all
+# Rule: re
+re: fclean all
